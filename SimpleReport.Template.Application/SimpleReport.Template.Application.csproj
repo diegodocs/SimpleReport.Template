@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44C5D037-95C1-4BB6-A692-A3B1F9B58633}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleReport.Template.Application</RootNamespace>
+    <AssemblyName>SimpleReport.Template.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\Repository\IApplicationUserRepository.cs" />
+    <Compile Include="Contracts\Repository\IReportProcessRepository.cs" />
+    <Compile Include="Contracts\Repository\IReportRepository.cs" />
+    <Compile Include="Contracts\Service\IApplicationBaseService.cs" />
+    <Compile Include="Contracts\Service\IApplicationUserService.cs" />
+    <Compile Include="Contracts\Service\IDataTableExportService.cs" />
+    <Compile Include="Contracts\Service\IDataTableExportToCsvService.cs" />
+    <Compile Include="Contracts\Service\IDataTableExportToHtmlService.cs" />
+    <Compile Include="Contracts\Service\IFileHandler.cs" />
+    <Compile Include="Contracts\Service\IReportProcessService.cs" />
+    <Compile Include="Contracts\Service\IReportService.cs" />
+    <Compile Include="Service\DataTableExportToCsvService.cs" />
+    <Compile Include="Service\DataTableExportToHtmlService.cs" />
+    <Compile Include="Service\ReportProcessService.cs" />
+    <Compile Include="Service\ApplicationUserService.cs" />
+    <Compile Include="Service\ReportService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleReport.Core\SimpleReport.Core.csproj">
+      <Project>{E4BB70B5-B149-496A-9E08-B7384C3B6F9C}</Project>
+      <Name>SimpleReport.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleReport.Template.Domain\SimpleReport.Template.Domain.csproj">
+      <Project>{CD606DBC-DDD0-4F83-B5E2-B8BDEBC9CB65}</Project>
+      <Name>SimpleReport.Template.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
