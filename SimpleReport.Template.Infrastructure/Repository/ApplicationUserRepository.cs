@@ -19,7 +19,7 @@ namespace SimpleReport.Template.Infrastructure.Repository
             context.ExecuteCommand(
                 new RepositoryCommand
                 {
-                    CommandName = "spDeleteReportProcess",
+                    CommandName = "spDeleteApplicationUser",
                     Parameters = new Dictionary<string, object> { { "ReportProcessId", id } }
                 });
         }
@@ -83,7 +83,7 @@ namespace SimpleReport.Template.Infrastructure.Repository
         {
             context.ExecuteCommand(new RepositoryCommand
             {
-                CommandName = "spInsertApplicationUser",
+                CommandName = "spUpdateApplicationUser",
                 Parameters = new Dictionary<string, object> {
                     { "Name", instance.Name },
                     { "Email", instance.Email },
@@ -99,7 +99,14 @@ namespace SimpleReport.Template.Infrastructure.Repository
 
         public void UpdateLastLogin(string login)
         {
-            throw new NotImplementedException();
+            context.ExecuteCommand(new RepositoryCommand
+            {
+                CommandName = "spUpdateApplicationUserLastLogin",
+                Parameters = new Dictionary<string, object> {                   
+                    { "Login", login },                   
+                    { "LastLogin", DateTime.Now }
+                }
+            });
         }
     }
 }

@@ -5,6 +5,7 @@
     {
         public string ConnectionString { get; set; }
         public string PathToExportExcelFiles { get; set; }
+        public int ThreadTimeOutInMiliseconds { get; set; }
         public int TimerIntervalInMiliSeconds { get; set; }
     }
 }

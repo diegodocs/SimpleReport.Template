@@ -85,7 +85,8 @@ namespace SimpleReport.Template.Service
             {
                 PathToExportExcelFiles = Path.Combine(Environment.CurrentDirectory, "ExportedFiles"),
                 TimerIntervalInMiliSeconds = 10000,
-                ConnectionString = @""
+                ConnectionString = @"",
+                ThreadTimeOutInMiliseconds = 2000
             };
             var fileHandler = new FileHandler();
             var excelExportService = new DataTableExportToCsvService(fileHandler);
@@ -98,7 +99,7 @@ namespace SimpleReport.Template.Service
 
             var threadManager = new ThreadManager<ReportProcessModel>();
 
-            threadManager.ProcessInParallel(10, listToProcess, reportProcessService.ExecuteProcess, TimeSpan.FromMinutes(2));
+            threadManager.ProcessInParallel(10, listToProcess, reportProcessService.ExecuteProcess, TimeSpan.FromMinutes(globalConfig.ThreadTimeOutInMiliseconds));
         }
 
         private static void Stop()
